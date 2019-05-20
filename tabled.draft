@@ -1,0 +1,59 @@
+enum ESourceType:
+    None, // прямой заход
+    Ads.Yandex,
+    Ads.Google,
+    Links,
+    Search.Yandex,
+    Search.Google,
+    Search.Other,
+    Soc.Faceboo,
+    Soc.VK,
+    Soc.Instagram,
+    Soc.Other,
+    Other
+
+table Contacts:
+    repeated string Email
+    repeated string Telephone
+    timestamp Created
+    string CustomFields #JSON
+
+table Visits:
+    Metrika {VisitID, UserID}
+    IP
+    Cookie
+    Timestamp
+    SourceType
+    UTM (CampaignID, BannerID, ...)
+
+table Leads:
+    repeated id ContactID
+    timestamp Created
+    string CustomFields #JSON
+    repeated is VisitID
+
+table Deals:
+    required id LeadID
+    state (Closes, Cancelled, ...)
+    float Revenue
+    float Profit
+
+table Costs: # from API
+    timestamp
+    float Cost
+    SourceType
+    CampaignID
+    BannerID
+
+=================================== Как рисуется статистика:
+
+селекторы:
+1) Разрез: по SourceType [по умолчанию], по CampaignID внутри SourceType, по BannerID внутри CampaignID
+2) Атрибуция: первый визит [по умолчанию], последний визит, ассоциированная (ВСЕ ВИЗИТЫ)
+3) Диапазон дат
+
+Как берутся данные:
+- num Deals, sum(Revenue), sum(Profit) из Deals. Ключи берем по Deals->Leads->Visits (самый первый, самый послединй, или все)
+- num Visits из таблицы Visits. Ключ там лежит уже
+- sum(Cost) из Costs. Ключ тоже там лежит.
+
