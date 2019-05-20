@@ -1,0 +1,44 @@
+{
+    // login с правами на чтение.
+    "GoogleAds": {
+        "Login": "krovexpo2017@gmail.com",
+        "Password": "*****"
+    },
+    // login с правами на чтение.
+    "YandexAds" {   
+        "Login": "sofijakulagina@yandex.ru",
+        "Password": "*****"
+    },
+    "CRMs": [
+        {
+            "Type": "Bitrix24",
+            "User": ...,
+            "Token": ...
+        }
+    ],
+    "CallTracking": {
+        "Numbers": [
+            "+7(495)796-41-96",
+            "+7(495)796-41-95"
+        ],
+        "HttpSelectors": [
+            {
+                "Type": "id",
+                "Value": "h-phone"
+            }
+        ]
+    },
+    "EmailTracking": {
+        "Emails": [
+            "info@krovexpo.ru",
+            "info1@krovexpo.ru",
+            ...
+        ],
+        "HttpSelectors": [
+            {
+                "Type": "class",
+                "Value": "email-basic"
+            }
+        ]
+    }
+}
