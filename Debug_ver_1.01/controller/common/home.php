@@ -4,6 +4,11 @@ class ControllerCommonHome extends Controller {
     $this->load->model('common/customer');
     $customer_info = $this->model_common_customer->customerInfo(1);
 
-    echo $customer_info['firstname'] . " " . $customer_info['lastname'];
+    $data = array();
+    $data['firstname'] = $customer_info['firstname'];
+    $data['lastname']  = $customer_info['lastname'];
+
+    $this->response->addHeader('Access-Control-Allow-Origin: https://org-exam.ru');
+    $this->response->setOutput($this->load->view('common/home', $data));
   }
 }

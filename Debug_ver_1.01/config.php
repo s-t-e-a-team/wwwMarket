@@ -5,6 +5,7 @@ define('DIR_MODEL', '/home/m/medbellsru/wwwMarket/public_html/model/');
 define('DIR_SYSTEM', '/home/m/medbellsru/wwwMarket/public_html/system/');
 define('DIR_CACHE', '/home/m/medbellsru/wwwMarket/public_html/cache/');
 define('DIR_LOGS', '/home/m/medbellsru/wwwMarket/public_html/logs/');
+define('DIR_TEMPLATE', '/home/m/medbellsru/wwwMarket/public_html/view/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
